@@ -106,7 +106,9 @@ router.get("/:thingID", function(req, res) {
     res.setHeader("Access-Control-Allow-Origin", "*");
 
     var sql =
-      `select description from  things where thingID ==` + `req.params.thingID`;
+      "SELECT description FROM things where thingID ==" +
+      req.params.thingID +
+      "";
     var params = [];
     db.all(sql, params, (err, rows) => {
       if (err) {
