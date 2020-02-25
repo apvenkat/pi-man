@@ -3,8 +3,15 @@ var router = express.Router();
 const Gpio = require("onoff").Gpio;
 
 router.get("/:thingID/properties/on", function(req, res) {
-  var pin = req.params.thingID.slice(-1);
-  res.send("pin number is " + pin);
+ var pin = req.params.thingID.slice(-1);
+  const led = new Gpio(pin, "out");
+ led.read((err, value) => { // Asynchronous read
+    if (err) {
+      throw err;
+    }
+
+  res.json({ on: value === 0 ? false : true });
+})
 });
 //   //   request(thingsURL, { json: true }, (err, res, webthings) => {
 //   //     if (err) {
@@ -21,7 +28,7 @@ router.put("/:thingID/properties/on", function(req, res) {
   let value = req.body.on;
   var pin = req.params.thingID.slice(-1);
   const led = new Gpio(pin, "out");
-  led.writeSync(value === true ? 1 : 0);
+  led.write(value === true ? 1 : 0);
   res.json({ on: value });
   switchOnOff(value);
 });
@@ -45,10 +52,8 @@ router.get("/:thingID/properties/value", function(req, res) {
 // });
 
 function switchOnOff(data) {
-  console.log(data);
-  var status = { on: data };
+  console.log("change detected -" + data);  
 
-  return status;
 }
 
 function randomInt(low, high) {
