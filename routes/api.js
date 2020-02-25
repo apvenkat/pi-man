@@ -101,8 +101,11 @@ router.get("/", function(req, res) {
   });
 });
 
-router.get("/id/:id", function(req, res) {
-  processData(res, "SELECT * FROM things where id == " + req.params.id);
+router.get("/:thingID", function(req, res) {
+  processData(
+    res,
+    "SELECT description FROM things where thingID == " + req.params.thingID
+  );
 });
 
 //Delete Device

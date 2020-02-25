@@ -19,10 +19,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/", pages);
 app.use("/things", require("./../routes/api"));
 app.use("/things", require("./../routes/properties"));
-app.use("/pi/sensors", sensorRoutes);
-app.use("/pi/sensors/pir/simulate", digital);
-app.use("/pi/sensors/temperature/simulate", analog);
-app.get("/pi", function(req, res) {
+// app.use("/pi/sensors", sensorRoutes);
+// app.use("/pi/sensors/pir/simulate", digital);
+// app.use("/pi/sensors/temperature/simulate", analog);
+app.get("/", function(req, res) {
   res.send("This is the WoT-Pi!");
 });
 
