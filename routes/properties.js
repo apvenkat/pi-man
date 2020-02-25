@@ -3,7 +3,8 @@ var router = express.Router();
 const Gpio = require("onoff").Gpio;
 
 router.get("/:thingID/properties/on", function(req, res) {
-  res.send(JSON.stringify(switchOnOff()));
+  var pin = req.params.thingID.slice(-1);
+  res.send("pin number is " + pin);
 });
 //   //   request(thingsURL, { json: true }, (err, res, webthings) => {
 //   //     if (err) {
