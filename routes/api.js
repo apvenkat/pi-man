@@ -59,25 +59,27 @@ router.post("/", function(req, res) {
   });
 });
 
-function processData(res, sql) {
-  db.serialize(function() {
-    db.all(sql, function(err, rows) {
-      if (err) {
-        console.error(err);
-        res.status(500).send(err);
-      } else sendData(res, rows, err);
-    });
-  });
-}
+// function processData(res, sql) {
+//   db.serialize(function() {
+//     db.all(sql, function(err, rows) {
+//       if (err) {
+//         console.error(err);
+//         res.status(500).send(err);
+//       } else sendData(res, rows, err);
+//     });
+//   });
+// }
 
-function sendData(res, data, err) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
+// function sendData(res, data, err) {
+//   res.setHeader("Access-Control-Allow-Origin", "*");
 
-  if (data[0]) res.send(data);
-  else {
-    res.status(404).send("Device not found");
-  }
-}
+//   if (data[0]) {
+//     const thing = JSON.parse(row.description);
+//     res.json(thing);
+//   } else {
+//     res.status(404).send("Device not found");
+//   }
+// }
 
 router.get("/", function(req, res) {
   db.serialize(function() {
@@ -101,14 +103,12 @@ router.get("/", function(req, res) {
   });
 });
 
-router.get("/:thingID", function(req, res) {
+router.get("/:id", function(req, res) {
   db.serialize(function() {
     res.setHeader("Access-Control-Allow-Origin", "*");
 
     var sql =
-      "SELECT description FROM things where thingID ==" +
-      req.params.thingID +
-      "";
+      "select description from  things where id = " + req.params.id + "";
     var params = [];
     db.all(sql, params, (err, rows) => {
       if (err) {
@@ -129,12 +129,12 @@ router.get("/:thingID", function(req, res) {
 //Delete Device
 router.post("/delete", function(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
-  var name = req.body.name;
+  var thingID = req.body.thingID;
   if (!name) {
     res.status(400).send("Name is mandatory");
   } else {
-    var sql = `delete from  things where name = ?;`;
-    var values = [name];
+    var sql = `delete from  things where thingID = ?;`;
+    var values = [thingID];
 
     db.serialize(function() {
       db.run(sql, values, function(err) {
