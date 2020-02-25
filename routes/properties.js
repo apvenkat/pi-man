@@ -19,7 +19,7 @@ router.get("/:thingID/properties/on", function(req, res) {
 
 router.put("/:thingID/properties/on", function(req, res) {
   let value = req.body.on;
-  var pin = req.params.thingID.slice(-2);
+  var pin = req.params.thingID.slice(-1);
   const led = new Gpio(pin, "out");
   led.writeSync(value === true ? 1 : 0);
   res.json({ on: value });
