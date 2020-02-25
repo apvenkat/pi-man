@@ -102,10 +102,26 @@ router.get("/", function(req, res) {
 });
 
 router.get("/:thingID", function(req, res) {
-  processData(
-    res,
-    "SELECT description FROM things where thingID == " + req.params.thingID
-  );
+  db.serialize(function() {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+
+    var sql =
+      `select description from  things where thingID ==` + `req.params.thingID`;
+    var params = [];
+    db.all(sql, params, (err, rows) => {
+      if (err) {
+        res.status(400).json({ error: err.message });
+        return;
+      }
+      const things = [];
+      for (const row of rows) {
+        const thing = JSON.parse(row.description);
+        thing.id = row.id;
+        things.push(thing);
+      }
+      res.json(things);
+    });
+  });
 });
 
 //Delete Device
