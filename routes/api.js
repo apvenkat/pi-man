@@ -19,7 +19,7 @@ router.post("/", function(req, res) {
       "@context": "http://w3c.github.io/wot/w3c-wot-td-context.jsonld",
       "@type": "Thing",
       thingID: thingID,
-      thingURL: "/things/" + id + "",
+      thingURL: "/things/" + thingID + "",
       name: name,
       properties: {
         on: {
@@ -34,7 +34,7 @@ router.post("/", function(req, res) {
       "@context": "http://w3c.github.io/wot/w3c-wot-td-context.jsonld",
       "@type": "Thing",
       thingID: thingID,
-      thingURL: "/things/" + id + "",
+      thingURL: "/things/" + thingID + "",
       name: name,
       properties: {
         sensor: {
@@ -105,13 +105,14 @@ router.get("/", function(req, res) {
   });
 });
 
-router.get("/:id", function(req, res) {
-  db.serialize(function() {
-    res.setHeader("Access-Control-Allow-Origin", "*");
+router.get("/:thingID", function(req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  var thing = req.params.thingID;
 
-    var sql =
-      "select description from  things where id = " + req.params.id + "";
-    var params = [];
+  var sql = `select description from  things where thingID = ?;`;
+  var params = [thing];
+
+  db.serialize(function() {
     db.all(sql, params, (err, rows) => {
       if (err) {
         res.status(400).json({ error: err.message });
