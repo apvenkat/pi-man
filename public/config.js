@@ -38,8 +38,10 @@ $(function() {
     if (e.target.className == "btn btn-success btn-just-icon") {
       $.ajax({
         url: "/things/" + e.target.id + "/properties/on",
-        dataType: "json",
         type: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
         data: JSON.stringify({ on: true })
       }); //ajax
     } // the target is a delete button
@@ -49,8 +51,10 @@ $(function() {
     if (e.target.className == "btn btn-danger btn-just-icon") {
       $.ajax({
         url: "/things/" + e.target.id + "/properties/on",
-        dataType: "json",
         type: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
         data: JSON.stringify({ on: false })
       }); //ajax
     } // the target is a delete button
