@@ -137,7 +137,7 @@ router.get("/:thingID", function(req, res) {
 router.post("/delete", function(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   var thingID = req.body.thingID;
-  if (!name) {
+  if (!thingID) {
     res.status(400).send("Name is mandatory");
   } else {
     var sql = `delete from  things where thingID = ?;`;
