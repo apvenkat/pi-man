@@ -19,6 +19,7 @@ router.post("/", function(req, res) {
       "@context": "http://w3c.github.io/wot/w3c-wot-td-context.jsonld",
       "@type": "Thing",
       thingID: thingID,
+      thingType: type,
       thingURL: "/things/" + thingID + "",
       name: name,
       properties: {
@@ -34,6 +35,7 @@ router.post("/", function(req, res) {
       "@context": "http://w3c.github.io/wot/w3c-wot-td-context.jsonld",
       "@type": "Thing",
       thingID: thingID,
+      thingType: type,
       thingURL: "/things/" + thingID + "",
       name: name,
       properties: {

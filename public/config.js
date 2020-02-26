@@ -66,20 +66,30 @@ $(function() {
 
     $.each(data, function(key, item) {
       console.log(key);
-      output += '<div class="column">';
-      output += '<div class="card">';
-      output += "<h3>" + item.thingID + "</h3>";
-      output += "<p>" + item.name + "</p>";
-      output +=
-        '<div><button class="btn btn-success btn-just-icon" id="' +
-        item.thingID +
-        '"  >On</button></div>';
-      output +=
-        '<div><button class="btn btn-danger btn-just-icon" id="' +
-        item.thingID +
-        '"  >Off</button></div>';
-      output += "</div>";
-      output += "</div>";
+      if (item.thingType == "onoff") {
+        output += '<div class="column">';
+        output += '<div class="card">';
+        output += "<h3>" + item.thingID + "</h3>";
+        output += "<p>" + item.name + "</p>";
+        output +=
+          '<div><button class="btn btn-success btn-just-icon" id="' +
+          item.thingID +
+          '"  >On</button></div>';
+        output +=
+          '<div><button class="btn btn-danger btn-just-icon" id="' +
+          item.thingID +
+          '"  >Off</button></div>';
+        output += "</div>";
+        output += "</div>";
+      } else {
+        output += '<div class="column">';
+        output += '<div class="card">';
+        output += "<h3>" + item.thingID + "</h3>";
+        output += "<p>" + item.name + "</p>";
+        output += "<p> TEXT </p>";
+        output += "</div>";
+        output += "</div>";
+      }
       // output += '     <div class="feedback-item item-list media-list">';
       // output += '       <div class="feedback-item media">';
       // output += '         <div class="feedback-info media-body">';
