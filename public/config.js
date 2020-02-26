@@ -40,8 +40,7 @@ $(function() {
         url: "/things/" + e.target.id + "/properties/on",
         dataType: "json",
         type: "PUT",
-        data: { on: "true" },
-        success: updateFeedback
+        data: { on: "true" }
       }); //ajax
     } // the target is a delete button
   }); //feedback messages
@@ -52,8 +51,7 @@ $(function() {
         url: "/things" + e.target.id + "/properties/on",
         dataType: "json",
         type: "PUT",
-        data: { on: "false" },
-        success: updateFeedback
+        data: { on: "false" }
       }); //ajax
     } // the target is a delete button
   }); //feedback messages
