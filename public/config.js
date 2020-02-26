@@ -37,9 +37,10 @@ $(function() {
   $(".feedback-messages").on("click", function(e) {
     if (e.target.className == "btn btn-success btn-just-icon") {
       $.ajax({
-        url: "api/on/" + e.target.id,
+        url: "/things/" + e.target.id + "/properties/on",
         dataType: "json",
         type: "PUT",
+        data: { on: "true" },
         success: updateFeedback
       }); //ajax
     } // the target is a delete button
@@ -48,9 +49,10 @@ $(function() {
   $(".feedback-messages").on("click", function(e) {
     if (e.target.className == "btn btn-danger btn-just-icon") {
       $.ajax({
-        url: "api/off/" + e.target.id,
+        url: "api/off/" + e.target.id + "/properties/on",
         dataType: "json",
         type: "PUT",
+        data: { on: "false" },
         success: updateFeedback
       }); //ajax
     } // the target is a delete button
@@ -64,9 +66,16 @@ $(function() {
       console.log(key);
       output += '<div class="column">';
       output += '<div class="card">';
-      output += "<h3>Card 1</h3>";
-      output += "<p>Some text</p>";
-      output += "<p>Some text</p>";
+      output += "<h3>" + item.thingID + "</h3>";
+      output += "<p>" + item.name + "</p>";
+      output +=
+        '<div><button class="btn btn-success btn-just-icon" id="' +
+        item.thingID +
+        '"  >On</button></div>';
+      output +=
+        '<div><button class="btn btn-danger btn-just-icon" id="' +
+        item.thingID +
+        '"  >Off</button></div>';
       output += "</div>";
       output += "</div>";
       // output += '     <div class="feedback-item item-list media-list">';
