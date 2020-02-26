@@ -84,25 +84,29 @@ router.post("/", function(req, res) {
 // }
 
 router.get("/", function(req, res) {
-  db.serialize(function() {
-    res.setHeader("Access-Control-Allow-Origin", "*");
+  if (req.accepts("html")) {
+    res.render("dashboard");
+  } else {
+    db.serialize(function() {
+      res.setHeader("Access-Control-Allow-Origin", "*");
 
-    var sql = `select description from  things;`;
-    var params = [];
-    db.all(sql, params, (err, rows) => {
-      if (err) {
-        res.status(400).json({ error: err.message });
-        return;
-      }
-      const things = [];
-      for (const row of rows) {
-        const thing = JSON.parse(row.description);
-        thing.id = row.id;
-        things.push(thing);
-      }
-      res.json(things);
+      var sql = `select description from  things`;
+      var params = [];
+      db.all(sql, params, (err, rows) => {
+        if (err) {
+          res.status(400).json({ error: err.message });
+          return;
+        }
+        const things = [];
+        for (const row of rows) {
+          const thing = JSON.parse(row.description);
+          thing.id = row.id;
+          things.push(thing);
+        }
+        res.json(things);
+      });
     });
-  });
+  }
 });
 
 router.get("/:thingID", function(req, res) {

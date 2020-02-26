@@ -113,22 +113,24 @@
                 <input
                   type="text"
                   class="form-control"
-                  name="name"
-                  id="name"
-                  placeholder="Name"
-                  required="required"
-                />
-              </div>
-              <div class="form-group">
-                <input
-                  type="text"
-                  class="form-control"
                   name="pin"
                   id="pin"
                   placeholder="pin"
                   required="required"
                 />
               </div>
+
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="name"
+                  id="name"
+                  placeholder="Name"
+                  required="required"
+                />
+              </div>
+
               <div class="form-group">
                 <select
                   class="form-control"
@@ -137,30 +139,8 @@
                   placeholder="type"
                   required="required"
                 >
-                  <option value="true">Input</option>
-                  <option value="false">Output</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  name="description"
-                  id="description"
-                  placeholder="description"
-                  required="required"
-                />
-              </div>
-              <div class="form-group">
-                <select
-                  class="form-control"
-                  name="value"
-                  id="value"
-                  placeholder="value"
-                  required="required"
-                >
-                  <option value="true">true</option>
-                  <option value="false">false</option>
+                  <option value="true">onoff</option>
+                  <option value="false">sensor</option>
                 </select>
               </div>
 
@@ -178,9 +158,9 @@
                 <input
                   type="text"
                   class="form-control"
-                  name="device-name"
-                  id="device-name"
-                  placeholder="Enter device name to remove"
+                  name="thing-id"
+                  id="thing-id"
+                  placeholder="Enter thingID to remove"
                   required="required"
                 />
               </div>

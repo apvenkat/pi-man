@@ -1,16 +1,23 @@
 $(function() {
-  $.getJSON("api", updateFeedback);
+  // $.getJSON("/things/api", updateFeedback);
+  $.ajax({
+    dataType: "json",
+    url: "/things",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    },
+    success: updateFeedback
+  });
 
   $(".gpio-form").submit(function(e) {
     e.preventDefault();
     $.post(
-      "/api",
+      "/things",
       {
-        name: $("#name").val(),
         pin: $("#pin").val(),
-        type: $("#type").val(),
-        description: $("#description").val(),
-        value: $("#value").val()
+        name: $("#name").val(),
+        type: $("#type").val()
       },
       updateFeedback
     );
@@ -19,9 +26,9 @@ $(function() {
   $(".remove-gpio-form").submit(function(e) {
     e.preventDefault();
     $.post(
-      "/api/delete/",
+      "/things/delete",
       {
-        name: $("#device-name").val()
+        thingID: $("#thing-id").val()
       },
       updateFeedback
     );
@@ -55,32 +62,39 @@ $(function() {
 
     $.each(data, function(key, item) {
       console.log(key);
+      output += '<div class="column">';
+      output += '<div class="card">';
+      output += "<h3>Card 1</h3>";
+      output += "<p>Some text</p>";
+      output += "<p>Some text</p>";
+      output += "</div>";
+      output += "</div>";
       // output += '     <div class="feedback-item item-list media-list">';
       // output += '       <div class="feedback-item media">';
       // output += '         <div class="feedback-info media-body">';
       // output += '           <div class="feedback-head">';
-      output +=
-        '             <div class="feedback-title">' +
-        item.pin +
-        ' <small class="feedback-name label label-info">' +
-        item.name +
-        "</small></div>";
-      // output += "           </div>";
-      // output += "<table>";
-      // output += "<tr>";
-      output +=
-        '<div><button class="btn btn-success btn-just-icon" id="' +
-        key +
-        '"  >On</button></div>';
-      output +=
-        '<div><button class="btn btn-danger btn-just-icon" id="' +
-        key +
-        '"  >Off</button></div>';
-      // output += "</tr>";
-      // output += "</table>";
-      output += "         </div>";
-      output += "       </div>";
-      output += "     </div>";
+      // output +=
+      //   '             <div class="feedback-title">' +
+      //   item.pin +
+      //   ' <small class="feedback-name label label-info">' +
+      //   item.name +
+      //   "</small></div>";
+      // // output += "           </div>";
+      // // output += "<table>";
+      // // output += "<tr>";
+      // output +=
+      //   '<div><button class="btn btn-success btn-just-icon" id="' +
+      //   key +
+      //   '"  >On</button></div>';
+      // output +=
+      //   '<div><button class="btn btn-danger btn-just-icon" id="' +
+      //   key +
+      //   '"  >Off</button></div>';
+      // // output += "</tr>";
+      // // output += "</table>";
+      // output += "         </div>";
+      // output += "       </div>";
+      // output += "     </div>";
     });
     $(".feedback-messages").html(output);
   }
