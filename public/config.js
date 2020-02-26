@@ -49,7 +49,7 @@ $(function() {
   $(".feedback-messages").on("click", function(e) {
     if (e.target.className == "btn btn-danger btn-just-icon") {
       $.ajax({
-        url: "api/off/" + e.target.id + "/properties/on",
+        url: "/things" + e.target.id + "/properties/on",
         dataType: "json",
         type: "PUT",
         data: { on: "false" },
