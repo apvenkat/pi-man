@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/", pages);
 app.use("/things", require("./../routes/api"));
 app.use("/things", require("./../routes/properties"));
+app.use("/users", require("./../routes/users"));
 // app.use("/pi/sensors", sensorRoutes);
 // app.use("/pi/sensors/pir/simulate", digital);
 // app.use("/pi/sensors/temperature/simulate", analog);

@@ -2,7 +2,7 @@ $(function() {
   $(".signup").submit(function(e) {
     e.preventDefault();
     $.post(
-      "/api/AddUser",
+      "/users/add",
       {
         name: $("#name").val(),
         email: $("#email").val(),
