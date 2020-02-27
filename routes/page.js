@@ -1,5 +1,6 @@
 var express = require("express"),
   router = express.Router();
+const auth = require("./auth/auth");
 
 router.get("/signup", function(req, res, next) {
   if (req.accepts("html")) {
