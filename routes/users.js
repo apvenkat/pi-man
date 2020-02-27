@@ -99,9 +99,4 @@ router.post("/login", function(req, res) {
   });
 });
 
-router.get("/logout", function(req, res) {
-  res.clearCookie("token");
-  res.redirect("/login");
-});
-
 module.exports = router;

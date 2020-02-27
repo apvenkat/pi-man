@@ -31,4 +31,9 @@ router.get("/config", function(req, res, next) {
   }
 });
 
+router.get("/logout", function(req, res) {
+  res.clearCookie("token");
+  res.redirect("/login");
+});
+
 module.exports = router;
