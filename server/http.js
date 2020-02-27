@@ -24,7 +24,11 @@ app.use("/users", require("./../routes/users"));
 // app.use("/pi/sensors/pir/simulate", digital);
 // app.use("/pi/sensors/temperature/simulate", analog);
 app.get("/", function(req, res) {
-  res.send("This is the WoT-Pi!");
+  if (req.accepts("html")) {
+    res.render("login");
+  } else {
+    res.send("Let's make Web of Things on Rpi");
+  }
 });
 
 module.exports = app;
