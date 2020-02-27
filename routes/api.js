@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var sqlite3 = require("sqlite3");
-const auth = require("./auth/auth");
+const auth = require("../auth/auth");
 const request = require("request");
 var db = new sqlite3.Database("db/sqlitedb.db");
 // // const Gpio = require("onoff").Gpio;

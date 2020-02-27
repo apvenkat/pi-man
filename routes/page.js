@@ -1,6 +1,6 @@
 var express = require("express"),
   router = express.Router();
-const auth = require("./auth/auth");
+const auth = require("../auth/auth");
 
 router.get("/signup", function(req, res, next) {
   if (req.accepts("html")) {
@@ -22,7 +22,7 @@ router.get("/login", function(req, res, next) {
   }
 });
 
-router.get("/config", function(req, res, next) {
+router.get("/config", auth, function(req, res, next) {
   if (req.accepts("html")) {
     res.render("config");
   } else {
