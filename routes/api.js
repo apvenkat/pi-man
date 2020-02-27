@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var sqlite3 = require("sqlite3");
+router.use(require("cookie-parser")());
 const auth = require("../auth/auth");
 const request = require("request");
 var db = new sqlite3.Database("db/sqlitedb.db");

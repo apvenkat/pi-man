@@ -1,5 +1,6 @@
 var express = require("express"),
   router = express.Router();
+router.use(require("cookie-parser")());
 const auth = require("../auth/auth");
 
 router.get("/signup", function(req, res, next) {
