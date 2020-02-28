@@ -62,6 +62,7 @@ router.get(
             res.json({ Humidity: humid + "%" });
           }
         });
+        break;
       case "":
         sensor.read(11, pin, function(err, humidity, temperature) {
           if (!err) {
@@ -70,6 +71,7 @@ router.get(
             res.json({ Temperature: temp + "°C", Humidity: humid + "%" });
           }
         });
+        break;
     }
   }
 
