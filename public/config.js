@@ -61,6 +61,20 @@ $(function() {
   });
 
   //
+  $(".feedback-messages").ready(function(e) {
+    var temperature;
+    $.ajax({
+      dataType: "json",
+      url: "/things/" + e.target.id + "/properties/temperature ",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      success: function(data) {
+        console.log(data);
+      }
+    });
+  });
 
   function updateThings(data) {
     console.log(data);
@@ -88,23 +102,9 @@ $(function() {
         output += '<div class="card">';
         output += "<h3>" + item.thingID + "</h3>";
         output += "<p>" + item.name + "</p>";
-
-        $.ajax({
-          dataType: "json",
-          url: "/things/" + thingID + "/properties/temperature ",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json"
-          },
-          success: display_temp
-        });
-        function display_temp(data) {
-          console.log(data);
-
-          output += "<p>" + item.temperature + " </p>";
-          output += "</div>";
-          output += "</div>";
-        }
+        output += "<p> Temperature : </p>";
+        output += "</div>";
+        output += "</div>";
       }
       // output += '     <div class="feedback-item item-list media-list">';
       // output += '       <div class="feedback-item media">';
