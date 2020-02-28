@@ -60,6 +60,16 @@ $(function() {
     } // the target is a OFF  button
   });
 
+  $.ajax({
+    dataType: "json",
+    url: "/things/" + e.target.id + "/properties/temperature ",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    },
+    success: updateThings
+  });
+
   //
 
   function updateThings(data) {
