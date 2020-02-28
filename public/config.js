@@ -60,16 +60,6 @@ $(function() {
     } // the target is a OFF  button
   });
 
-  $.ajax({
-    dataType: "json",
-    url: "/things/" + e.target.id + "/properties/temperature ",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json"
-    },
-    success: updateThings
-  });
-
   //
 
   function updateThings(data) {
@@ -98,9 +88,23 @@ $(function() {
         output += '<div class="card">';
         output += "<h3>" + item.thingID + "</h3>";
         output += "<p>" + item.name + "</p>";
-        output += "<p> TEXT </p>";
-        output += "</div>";
-        output += "</div>";
+
+        $.ajax({
+          dataType: "json",
+          url: "/things/" + thingID + "/properties/temperature ",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+          },
+          success: display_temp
+        });
+        function display_temp(data) {
+          console.log(data);
+
+          output += "<p>" + item.temperature + " </p>";
+          output += "</div>";
+          output += "</div>";
+        }
       }
       // output += '     <div class="feedback-item item-list media-list">';
       // output += '       <div class="feedback-item media">';
