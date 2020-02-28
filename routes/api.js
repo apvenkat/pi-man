@@ -16,38 +16,49 @@ router.post("/", function(req, res) {
   var thingID = "gpio-" + pin + "";
   var name = req.body.name;
   var type = req.body.type;
-  if (req.body.type == "onoff") {
-    var description = JSON.stringify({
-      "@context": "http://w3c.github.io/wot/w3c-wot-td-context.jsonld",
-      "@type": "Thing",
-      thingID: thingID,
-      thingType: type,
-      thingURL: "/things/" + thingID + "",
-      name: name,
-      properties: {
-        on: {
-          type: type,
-          unit: "boolean",
-          href: "/things/" + thingID + "/properties/on"
+  switch (type) {
+    case "onoff":
+      var thingID = "gpio-" + pin + "";
+      var description = JSON.stringify({
+        "@context": "http://w3c.github.io/wot/w3c-wot-td-context.jsonld",
+        "@type": "Thing",
+        thingID: thingID,
+        thingType: type,
+        thingURL: "/things/gpio-" + pin + "",
+        name: name,
+        properties: {
+          on: {
+            type: type,
+            unit: "boolean",
+            href: "/things/gpio-" + pin + "/properties/on"
+          }
         }
-      }
-    });
-  } else
-    var description = JSON.stringify({
-      "@context": "http://w3c.github.io/wot/w3c-wot-td-context.jsonld",
-      "@type": "Thing",
-      thingID: thingID,
-      thingType: type,
-      thingURL: "/things/" + thingID + "",
-      name: name,
-      properties: {
-        sensor: {
-          type: type,
-          unit: "value",
-          href: "/things/" + thingID + "/properties/value"
+      });
+      break;
+    case "dht-sensor":
+      var thingID = "dht-" + pin + "";
+      var description = JSON.stringify({
+        "@context": "http://w3c.github.io/wot/w3c-wot-td-context.jsonld",
+        "@type": "Thing",
+        thingID: thingID,
+        thingType: type,
+        thingURL: "/things/dht-" + pin + "",
+        name: name,
+        properties: {
+          temperature: {
+            type: type,
+            unit: "°C",
+            href: "/things/dht-" + pin + "/properties/temperature"
+          },
+          humidity: {
+            type: type,
+            unit: "%",
+            href: "/things/dht-" + pin + "/properties/humidity"
+          }
         }
-      }
-    });
+      });
+      break;
+  }
 
   var sql = `insert into things (thingID,name,type, description)
         VALUES
