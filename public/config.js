@@ -1,5 +1,5 @@
 $(function() {
-  // $.getJSON("/things/api", updateFeedback);
+  // $.getJSON("/things/api", updateThings);
   $.ajax({
     dataType: "json",
     url: "/things",
@@ -7,7 +7,7 @@ $(function() {
       "Content-Type": "application/json",
       Accept: "application/json"
     },
-    success: updateFeedback
+    success: updateThings
   });
 
   $(".gpio-form").submit(function(e) {
@@ -19,9 +19,9 @@ $(function() {
         name: $("#name").val(),
         type: $("#type").val()
       },
-      updateFeedback
+      updateThings
     );
-  }); //feedback messages
+  }); //add things
 
   $(".remove-gpio-form").submit(function(e) {
     e.preventDefault();
@@ -30,9 +30,9 @@ $(function() {
       {
         thingID: $("#thing-id").val()
       },
-      updateFeedback
+      updateThings
     );
-  }); //feedback messages
+  }); //remove things
 
   $(".feedback-messages").on("click", function(e) {
     if (e.target.className == "btn btn-success btn-just-icon") {
@@ -44,8 +44,8 @@ $(function() {
         },
         data: JSON.stringify({ on: true })
       }); //ajax
-    } // the target is a delete button
-  }); //feedback messages
+    } // the target is a ON button
+  });
 
   $(".feedback-messages").on("click", function(e) {
     if (e.target.className == "btn btn-danger btn-just-icon") {
@@ -57,12 +57,12 @@ $(function() {
         },
         data: JSON.stringify({ on: false })
       }); //ajax
-    } // the target is a delete button
-  }); //feedback messages
+    } // the target is a OFF  button
+  });
 
   //
 
-  function updateFeedback(data) {
+  function updateThings(data) {
     console.log(data);
     var output = "";
 
