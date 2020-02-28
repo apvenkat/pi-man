@@ -61,22 +61,6 @@ $(function() {
   });
 
   //
-  $(".feedback-messages").ready(function(e) {
-    // var temperature;
-    if (e.target.className == "card") {
-      $.ajax({
-        dataType: "json",
-        url: "/things/" + e.target.id + "/properties/temperature ",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json"
-        },
-        success: function(data) {
-          console.log(data);
-        }
-      });
-    }
-  });
 
   function updateThings(data) {
     console.log(data);
@@ -86,7 +70,7 @@ $(function() {
       console.log(key);
       if (item.thingType == "onoff") {
         output += '<div class="column">';
-        output += '<div class="card" id="' + item.thingID + '">';
+        output += '<div class="card">';
         output += "<h3>" + item.thingID + "</h3>";
         output += "<p>" + item.name + "</p>";
         output +=
@@ -101,10 +85,10 @@ $(function() {
         output += "</div>";
       } else {
         output += '<div class="column">';
-        output += '<div class="card" id="' + item.thingID + '">';
+        output += '<div class="card">';
         output += "<h3>" + item.thingID + "</h3>";
         output += "<p>" + item.name + "</p>";
-        output += "<p> Temperature : </p>";
+        output += "<p>Temperature: </p>";
         output += "</div>";
         output += "</div>";
       }
