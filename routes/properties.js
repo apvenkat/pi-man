@@ -3,15 +3,16 @@ var router = express.Router();
 const Gpio = require("onoff").Gpio;
 
 router.get("/:thingID/properties/on", function(req, res) {
- var pin = req.params.thingID.slice(-1);
+  var pin = req.params.thingID.slice(-1);
   const led = new Gpio(pin, "out");
- led.read((err, value) => { // Asynchronous read
+  led.read((err, value) => {
+    // Asynchronous read
     if (err) {
       throw err;
     }
 
-  res.json({ on: value === 0 ? false : true });
-})
+    res.json({ on: value === 0 ? false : true });
+  });
 });
 //   //   request(thingsURL, { json: true }, (err, res, webthings) => {
 //   //     if (err) {
@@ -33,10 +34,29 @@ router.put("/:thingID/properties/on", function(req, res) {
   switchOnOff(value);
 });
 
-router.get("/:thingID/properties/value", function(req, res) {
-  var temperature = randomInt(0, 20);
-  res.json({ temperature: temperature });
-});
+// router.get("/:thingID/properties/value", function(req, res) {
+//   var temperature = randomInt(0, 20);
+//   res.json({ temperature: temperature });
+// });
+
+//DHT-sensor
+router.get(
+  "/:thingID/properties/",
+  function(req, res) {
+    var sensor = require("node-dht-sensor");
+    var pin = req.params.thingID.slice(-1);
+    sensor.read(11, pin, function(err, temperature, humidity) {
+      if (!err) {
+        var temp = temperature;
+        var humid = humidity;
+        res.json({ Temperature: temp, Humidity: humid });
+      }
+    });
+  }
+
+  // var temperature = randomInt(0, 20);
+  // res.json({ temperature: temperature });
+);
 
 //GPIO Low
 
@@ -52,8 +72,7 @@ router.get("/:thingID/properties/value", function(req, res) {
 // });
 
 function switchOnOff(data) {
-  console.log("change detected -" + data);  
-
+  console.log("change detected -" + data);
 }
 
 function randomInt(low, high) {
