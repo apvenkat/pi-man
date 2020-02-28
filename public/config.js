@@ -60,6 +60,17 @@ $(function() {
     } // the target is a delete button
   }); //feedback messages
 
+  //
+  var settings = {
+    url: "/things/" + e.target.id + "/properties/temperature",
+    method: "GET",
+    timeout: 0
+  };
+
+  $.ajax(settings).done(function(response) {
+    var temperature = response;
+  });
+
   function updateFeedback(data) {
     console.log(data);
     var output = "";
@@ -86,7 +97,7 @@ $(function() {
         output += '<div class="card">';
         output += "<h3>" + item.thingID + "</h3>";
         output += "<p>" + item.name + "</p>";
-        output += "<p> TEXT </p>";
+        output += "<p>" + temperature + "</p>";
         output += "</div>";
         output += "</div>";
       }

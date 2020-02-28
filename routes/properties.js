@@ -63,15 +63,6 @@ router.get(
           }
         });
         break;
-      case "":
-        sensor.read(11, pin, function(err, humidity, temperature) {
-          if (!err) {
-            var humid = humidity;
-            var temp = temperature;
-            res.json({ Temperature: temp + "°C", Humidity: humid + "%" });
-          }
-        });
-        break;
     }
   }
 
