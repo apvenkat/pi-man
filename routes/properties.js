@@ -41,17 +41,36 @@ router.put("/:thingID/properties/on", function(req, res) {
 
 //DHT-sensor
 router.get(
-  "/:thingID/properties/",
+  "/:thingID/properties/:value",
   function(req, res) {
     var sensor = require("node-dht-sensor");
     var pin = req.params.thingID.slice(-1);
-    sensor.read(11, pin, function(err, temperature, humidity) {
-      if (!err) {
-        var temp = temperature;
-        var humid = humidity;
-        res.json({ Temperature: temp, Humidity: humid });
-      }
-    });
+    var dht = req.params.value;
+    switch (dht) {
+      case temperature:
+        sensor.read(11, pin, function(err, temperature) {
+          if (!err) {
+            var temp = temperature;
+            res.json({ Temperature: temp + "°C" });
+          }
+        });
+        break;
+      case humidity:
+        sensor.read(11, pin, function(err, humidity) {
+          if (!err) {
+            var humid = humidity;
+            res.json({ Humidity: humid + "%" });
+          }
+        });
+      default:
+        sensor.read(11, pin, function(err, humidity, temperature) {
+          if (!err) {
+            var humid = humidity;
+            var temp = temperature;
+            res.json({ Temperature: temp + "°C", Humidity: humid + "%" });
+          }
+        });
+    }
   }
 
   // var temperature = randomInt(0, 20);
