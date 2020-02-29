@@ -72,7 +72,8 @@ $(function() {
       $.getJSON("/things/" + item.thingID + "/properties/temperature", function(
         json
       ) {
-        console.log(json);
+        console.log(json.temperature);
+        var temp = json.temperature;
       });
       if (item.thingType == "onoff") {
         output += '<div class="column">';
@@ -94,7 +95,7 @@ $(function() {
         output += '<div class="card">';
         output += "<h3>" + item.thingID + "</h3>";
         output += "<p>" + item.name + "</p>";
-        output += "<p>Temperature: </p>";
+        output += "<p>Temperature:" + temp + " </p>";
         output += "</div>";
         output += "</div>";
       }
