@@ -95,12 +95,16 @@ $(function() {
         output += '<div class="card">';
         output += "<h3>" + item.thingID + "</h3>";
         output += "<p>" + item.name + "</p>";
-        let data = $.getJSON(
-          "/things/" + item.thingID + "/properties/temperature",
-          { data }
-        );
-
-        output += "<p>" + data.temperature + "</p>";
+        $(document).ready(function() {
+          $.getJSON("/things/" + item.thingID + "/properties/temperature").done(
+            function(response) {
+              $.each(response, function(index, data) {
+                console.log(index);
+                output += "<p>" + data.Temperature + "</p>";
+              });
+            }
+          );
+        });
 
         output += "</div>";
         output += "</div>";
