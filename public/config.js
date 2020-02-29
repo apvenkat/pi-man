@@ -95,7 +95,10 @@ $(function() {
         output += '<div class="card">';
         output += "<h3>" + item.thingID + "</h3>";
         output += "<p>" + item.name + "</p>";
-        let data = { temperature: 30 };
+        let data = $.getJSON(
+          "/things/" + item.thingID + "/properties/temperature",
+          { data }
+        );
 
         output += "<p>" + data.temperature + "</p>";
 
