@@ -60,6 +60,19 @@ $(function() {
     } // the target is a OFF  button
   });
 
+  $(".feedback-messages").on("click", function(e) {
+    if (e.target.className == "btn btn-danger btn-just-icon") {
+      $.ajax({
+        url: "/things/" + e.target.id + "/properties/",
+        type: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        data: JSON.stringify({ on: false })
+      }); //ajax
+    } // the target is a OFF  button
+  });
+
   //
 
   function updateThings(data) {
@@ -91,21 +104,18 @@ $(function() {
         //   { data },
         //   processMyJson
         // );
+        function test() {
+          return $.getJSON(
+            "/things/" + item.thingID + "/properties/temperature"
+          );
+        }
         output += '<div class="column">';
         output += '<div class="card">';
         output += "<h3>" + item.thingID + "</h3>";
         output += "<p>" + item.name + "</p>";
-        $(document).ready(function() {
-          $.getJSON("/things/" + item.thingID + "/properties/temperature").done(
-            function(response) {
-              var out = "";
-              $.each(response, function(index, data) {
-                console.log(data);
-                out += "<p>" + data + "</p>";
-              });
-              $(".feedback-messages").html(out);
-            }
-          );
+        console.log(data);
+        $.when(test()).then(function(data) {
+          output += "<p>" + data + "</p>";
         });
 
         output += "</div>";
