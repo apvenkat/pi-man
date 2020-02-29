@@ -113,10 +113,13 @@ $(function() {
         output += '<div class="card">';
         output += "<h3>" + item.thingID + "</h3>";
         output += "<p>" + item.name + "</p>";
-        console.log(data);
-        $.when(test()).then(function(data) {
-          output += "<p>" + data + "</p>";
-        });
+
+        output +=
+          "<p>" +
+          $.when(test()).then(function(temp) {
+            temp;
+          }) +
+          "</p>";
 
         output += "</div>";
         output += "</div>";
