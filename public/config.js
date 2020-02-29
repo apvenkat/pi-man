@@ -97,27 +97,29 @@ $(function() {
           output += "<p>" + item.name + "</p>";
           $(document).ready(
             //#A
-            function doPoll() {
+            function doPollTemp() {
               $.getJSON(
                 "/things/" + item.thingID + "/properties/temperature", //#B
                 function(data) {
                   //#C
                   console.log(data);
                   $("#t-" + item.thingID + "").html("Temp:" + data.Temperature); //#D
-                  setTimeout(doPoll, 5000); //#E
-                }
-              );
-              $.getJSON(
-                "/things/" + item.thingID + "/properties/humidity", //#B
-                function(data) {
-                  //#C
-                  console.log(data);
-                  $("#h-" + item.thingID + "").html("Humid:" + data.Humidity); //#D
-                  setTimeout(doPoll, 5000); //#E
+                  setTimeout(doPollTemp, 5000); //#E
                 }
               );
             }
           );
+          $(document).ready(function doPollHumid() {
+            $.getJSON(
+              "/things/" + item.thingID + "/properties/humidity", //#B
+              function(data) {
+                //#C
+                console.log(data);
+                $("#h-" + item.thingID + "").html("Humid:" + data.Humidity); //#D
+                setTimeout(doPollHumid, 5000); //#E
+              }
+            );
+          });
 
           output += '<h3 id="t-' + item.thingID + '"></h3>';
           output += '<h3 id="h-' + item.thingID + '"></h3>';
