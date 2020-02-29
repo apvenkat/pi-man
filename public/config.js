@@ -90,15 +90,15 @@ $(function() {
         $.getJSON(
           "/things/" + item.thingID + "/properties/temperature",
           function(json) {
-            temp = json.Temperature;
-            console.log(temp);
+            temp = json;
+            console.log(json);
           }
         );
         output += '<div class="column">';
         output += '<div class="card">';
         output += "<h3>" + item.thingID + "</h3>";
         output += "<p>" + item.name + "</p>";
-        output += "<p>Temperature:" + temp + "</p>";
+        output += "<p>Temperature:" + JSON.parse(temp.Temperature) + "</p>";
         output += "</div>";
         output += "</div>";
       }
