@@ -103,6 +103,7 @@ $(function() {
             '"  >Off</button></div>';
           output += "</div>";
           output += "</div>";
+          break;
 
         case "dht-sensor":
           output += '<div class="column">';
@@ -118,6 +119,7 @@ $(function() {
 
           output += "</div>";
           output += "</div>";
+          break;
 
         // $.getJSON(
         //   "/things/" + item.thingID + "/properties/temperature",
