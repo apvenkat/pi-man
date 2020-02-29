@@ -86,19 +86,27 @@ $(function() {
         output += "</div>";
         output += "</div>";
       } else {
-        var temp;
-        $.getJSON(
-          "/things/" + item.thingID + "/properties/temperature",
-          function(json) {
-            temp = json;
-            console.log(json);
-          }
-        );
+        var temperature = getTemp();
+
+        function getTemp() {
+          var result = null;
+          $.ajax({
+            async: false,
+            url: "/things/" + item.thingID + "/properties/temperature",
+            data: { data },
+            dataType: "json",
+            success: function(data) {
+              result = data;
+            }
+          });
+          return result;
+        }
+
         output += '<div class="column">';
         output += '<div class="card">';
         output += "<h3>" + item.thingID + "</h3>";
         output += "<p>" + item.name + "</p>";
-        output += "<p>Temperature:" + JSON.parse(temp.Temperature) + "</p>";
+        output += "<p>Temperature:" + temperature + "</p>";
         output += "</div>";
         output += "</div>";
       }
