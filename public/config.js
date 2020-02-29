@@ -18,7 +18,7 @@ $(function() {
         url: "/things/" + e.target.id + "/properties/temperature",
         cache: false,
         success: function(data) {
-          suggest = JSON.parse(data);
+          suggest = data;
         }
       });
     }
@@ -65,19 +65,6 @@ $(function() {
     if (e.target.className == "btn btn-danger btn-just-icon") {
       $.ajax({
         url: "/things/" + e.target.id + "/properties/on",
-        type: "PUT",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        data: JSON.stringify({ on: false })
-      }); //ajax
-    } // the target is a OFF  button
-  });
-
-  $(".feedback-messages").on("click", function(e) {
-    if (e.target.className == "btn btn-danger btn-just-icon") {
-      $.ajax({
-        url: "/things/" + e.target.id + "/properties/",
         type: "PUT",
         headers: {
           "Content-Type": "application/json"
