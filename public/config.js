@@ -102,8 +102,9 @@ $(function() {
           function getTemp() {
             return data.Temperature;
           }
+          output += "<p>Temperature:" + temperature + "</p>";
         }
-        output += "<p>Temperature:" + temperature + "</p>";
+
         output += "</div>";
         output += "</div>";
       }
