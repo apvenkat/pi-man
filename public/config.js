@@ -86,21 +86,20 @@ $(function() {
         output += "</div>";
         output += "</div>";
       } else {
-        var settings = {
-          url: "/things/" + item.thingID + "/properties/temperature",
-          method: "GET",
-          timeout: 0
-        };
+        $.getJSON(
+          "/things/" + item.thingID + "/properties/temperature",
+          function(json) {
+            processMyJson(json);
+          }
+        );
         output += '<div class="column">';
         output += '<div class="card">';
         output += "<h3>" + item.thingID + "</h3>";
         output += "<p>" + item.name + "</p>";
 
-        output += JSON.stringify(
-          $.ajax(settings).done(function(response) {
-            cosole.log(response);
-          })
-        );
+        function processMyJson(json) {
+          console.log(json);
+        }
 
         output += "</div>";
         output += "</div>";
