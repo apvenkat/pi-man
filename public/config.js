@@ -114,12 +114,13 @@ $(function() {
         output += "<h3>" + item.thingID + "</h3>";
         output += "<p>" + item.name + "</p>";
 
-        output +=
+        output += JSON.stringify(
           "<p>" +
-          $.when(test()).then(function(temp) {
-            JSON.stringify(temp);
-          }) +
-          "</p>";
+            $.when(test()).then(function(temp) {
+              temp;
+            }) +
+            "</p>"
+        );
 
         output += "</div>";
         output += "</div>";
