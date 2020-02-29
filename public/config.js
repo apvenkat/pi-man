@@ -117,7 +117,7 @@ $(function() {
         output +=
           "<p>" +
           $.when(test()).then(function(temp) {
-            temp;
+            JSON.stringify(temp);
           }) +
           "</p>";
 
