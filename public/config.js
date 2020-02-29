@@ -64,10 +64,16 @@ $(function() {
 
   function updateThings(data) {
     console.log(data);
+
     var output = "";
 
     $.each(data, function(key, item) {
       console.log(key);
+      $.getJSON("/things/" + item.thingID + "/properties/temperature", function(
+        json
+      ) {
+        console.log(json);
+      });
       if (item.thingType == "onoff") {
         output += '<div class="column">';
         output += '<div class="card">';
