@@ -86,18 +86,14 @@ $(function() {
         output += "</div>";
         output += "</div>";
       } else {
-        var temperature = getTemp();
-        function getTemp() {
-          var temp;
-          $.getJSON(
-            "/things/" + item.thingID + "/properties/temperature",
-            function(json) {
-              temp = json.Temperature;
-              console.log(temp);
-            }
-          );
-          return temp;
-        }
+        var temperature = null;
+        $.getJSON(
+          "/things/" + item.thingID + "/properties/temperature",
+          data,
+          function(result) {
+            temp = result.Temperature;
+          }
+        );
 
         output += '<div class="column">';
         output += '<div class="card">';
