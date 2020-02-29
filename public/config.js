@@ -115,7 +115,11 @@ $(function() {
         output += "<h3>" + item.thingID + "</h3>";
         output += "<p>" + item.name + "</p>";
         output +=
-          "<p class='text-center' id =" + item.thingID + ">" + suggest + "</p>";
+          '<p class="text-center" id ="' +
+          item.thingID +
+          '">' +
+          suggest +
+          "</p>";
 
         output += "</div>";
         output += "</div>";
