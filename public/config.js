@@ -86,7 +86,7 @@ $(function() {
         output += "</div>";
         output += "</div>";
       } else {
-        var temperature = null;
+        var temperature = "";
         $.getJSON(
           "/things/" + item.thingID + "/properties/temperature",
 
