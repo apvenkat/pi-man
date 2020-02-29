@@ -103,14 +103,14 @@ $(function() {
                 function(data) {
                   //#C
                   console.log(data);
-                  $("#temp").html(data.Temperature); //#D
+                  $("#" + item.thingID + "").html(data.Temperature); //#D
                   setTimeout(doPoll, 5000); //#E
                 }
               );
             }
           );
 
-          output += '<h2 id="temp"></h2>';
+          output += '<h2 id="' + item.thingID + '"></h2>';
           output += "</div>";
           output += "</div>";
           break;
