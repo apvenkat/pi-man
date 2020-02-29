@@ -99,7 +99,7 @@ $(function() {
             //#A
             function doPoll() {
               $.getJSON(
-                "http://devices.webofthings.io/pi/sensors/temperature", //#B
+                "/things/" + item.thingID + "/properties/temperature", //#B
                 function(data) {
                   //#C
                   console.log(data);
