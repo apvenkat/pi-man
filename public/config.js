@@ -96,14 +96,11 @@ $(function() {
         output += "<h3>" + item.thingID + "</h3>";
         output += "<p>" + item.name + "</p>";
 
-        output +=
-          "<p>Temperature:" +
-          JSON.stringify(
-            $.ajax(settings).done(function(response) {
-              response;
-            })
-          ) +
-          "</p>";
+        output += JSON.stringify(
+          $.ajax(settings).done(function(response) {
+            cosole.log(response);
+          })
+        );
 
         output += "</div>";
         output += "</div>";
