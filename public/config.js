@@ -86,19 +86,18 @@ $(function() {
         output += "</div>";
         output += "</div>";
       } else {
-        $.getJSON(
-          "/things/" + item.thingID + "/properties/temperature",
-          { data },
-          processMyJson
-        );
+        // $.getJSON(
+        //   "/things/" + item.thingID + "/properties/temperature",
+        //   { data },
+        //   processMyJson
+        // );
         output += '<div class="column">';
         output += '<div class="card">';
         output += "<h3>" + item.thingID + "</h3>";
         output += "<p>" + item.name + "</p>";
+        let data = { temperature: 30 };
 
-        function processMyJson(data) {
-          output += "<p>" + data[0] + "</p>";
-        }
+        output += "<p>" + data.temperature + "</p>";
 
         output += "</div>";
         output += "</div>";
