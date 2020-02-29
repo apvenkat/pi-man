@@ -103,9 +103,7 @@ $(function() {
                 function(data) {
                   //#C
                   console.log(data);
-                  $("#t-" + item.thingID + "").html(
-                    "Temperature:" + data.Temperature
-                  ); //#D
+                  $("#t-" + item.thingID + "").html("Temp:" + data.Temperature); //#D
                   setTimeout(doPoll, 5000); //#E
                 }
               );
@@ -114,17 +112,15 @@ $(function() {
                 function(data) {
                   //#C
                   console.log(data);
-                  $("#h-" + item.thingID + "").html(
-                    "Humidity:" + data.Humidity
-                  ); //#D
+                  $("#h-" + item.thingID + "").html("Humid:" + data.Humidity); //#D
                   setTimeout(doPoll, 5000); //#E
                 }
               );
             }
           );
 
-          output += '<p id="t-' + item.thingID + '"></p>';
-          output += '<p id="h-' + item.thingID + '"></p>';
+          output += '<h1 id="t-' + item.thingID + '"></h1>';
+          output += '<h1 id="h-' + item.thingID + '"></h2>';
           output += "</div>";
           output += "</div>";
           break;
