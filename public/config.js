@@ -10,6 +10,20 @@ $(function() {
     success: updateThings
   });
 
+  var suggest;
+  $(".feedback-messages", function(e) {
+    if (e.target.className == "text-center") {
+      $.ajax({
+        type: "GET",
+        url: "/things/" + e.target.id + "/properties/temperature",
+        cache: false,
+        success: function(data) {
+          suggest = JSON.parse(data);
+        }
+      });
+    }
+  });
+
   $(".gpio-form").submit(function(e) {
     e.preventDefault();
     $.post(
@@ -84,7 +98,7 @@ $(function() {
       console.log(key);
 
       if (item.thingType == "onoff") {
-        output += '<div class="column">';
+        output += '<div class="column" id="' + item.thingID + '">';
         output += '<div class="card">';
         output += "<h3>" + item.thingID + "</h3>";
         output += "<p>" + item.name + "</p>";
@@ -109,18 +123,12 @@ $(function() {
             "/things/" + item.thingID + "/properties/temperature"
           );
         }
-        output += '<div class="column">';
+        output += '<div class="column" id="' + item.thingID + '">';
         output += '<div class="card">';
         output += "<h3>" + item.thingID + "</h3>";
         output += "<p>" + item.name + "</p>";
-
-        output += JSON.stringify(
-          "<p>" +
-            $.when(test()).then(function(temp) {
-              temp;
-            }) +
-            "</p>"
-        );
+        output +=
+          "<p class='text-center' id =" + item.thingID + ">" + suggest + "</p>";
 
         output += "</div>";
         output += "</div>";
