@@ -14,9 +14,12 @@ $(function() {
   $(".feedback-messages", function(e) {
     if (e.target.className == "text-center") {
       $.ajax({
-        type: "GET",
+        dataType: "json",
         url: "/things/" + e.target.id + "/properties/temperature",
-        cache: false,
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
         success: function(data) {
           suggest = JSON.parse(data);
         }
@@ -99,7 +102,7 @@ $(function() {
         output += "</div>";
         output += "</div>";
       } else {
-        output += '<div class="column" id="' + item.thingID + '">';
+        output += '<div class="column">';
         output += '<div class="card">';
         output += "<h3>" + item.thingID + "</h3>";
         output += "<p>" + item.name + "</p>";
