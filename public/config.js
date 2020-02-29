@@ -88,6 +88,7 @@ $(function() {
       } else {
         $.getJSON(
           "/things/" + item.thingID + "/properties/temperature",
+          { data },
           processMyJson
         );
         output += '<div class="column">';
@@ -95,12 +96,9 @@ $(function() {
         output += "<h3>" + item.thingID + "</h3>";
         output += "<p>" + item.name + "</p>";
 
-        output +=
-          "<p>" +
-          function processMyJson(json) {
-            json;
-          } +
-          "</p";
+        function processMyJson(data) {
+          console.log(data);
+        }
 
         output += "</div>";
         output += "</div>";
