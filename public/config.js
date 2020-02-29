@@ -88,7 +88,7 @@ $(function() {
       } else {
         var temperature = getTemp();
         function getTemp() {
-          var temp = null;
+          var temp;
           $.getJSON(
             "/things/" + item.thingID + "/properties/temperature",
             function(json) {
