@@ -98,12 +98,10 @@ $(function() {
         output += '<div class="card">';
         output += "<h3>" + item.thingID + "</h3>";
         output += "<p>" + item.name + "</p>";
-        output +=
-          "<p>Temperature:" +
-          function temperature() {
-            temp;
-          } +
-          "</p>";
+        function temperature() {
+          output += "<p>Temperature:" + temp + "</p>";
+        }
+
         output += "</div>";
         output += "</div>";
       }
