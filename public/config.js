@@ -18,7 +18,7 @@ $(function() {
         url: "/things/" + e.target.id + "/properties/temperature",
         cache: false,
         success: function(data) {
-          suggest = JSON.stringify(data);
+          suggest = JSON.parse(data);
         }
       });
     }
