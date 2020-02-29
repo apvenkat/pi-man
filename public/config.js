@@ -100,7 +100,7 @@ $(function() {
           "<p>Temperature:" +
           JSON.stringify(
             $.ajax(settings).done(function(response) {
-              response.Temperature;
+              response;
             })
           ) +
           "</p>";
