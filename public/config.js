@@ -119,8 +119,8 @@ $(function() {
             }
           );
 
-          output += '<h1 id="t-' + item.thingID + '"></h1>';
-          output += '<h1 id="h-' + item.thingID + '"></h2>';
+          output += '<h3 id="t-' + item.thingID + '"></h3>';
+          output += '<h3 id="h-' + item.thingID + '"></h3>';
           output += "</div>";
           output += "</div>";
           break;
