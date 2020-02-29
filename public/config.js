@@ -96,12 +96,10 @@ $(function() {
         output += '<div class="card">';
         output += "<h3>" + item.thingID + "</h3>";
         output += "<p>" + item.name + "</p>";
-        output +=
-          "<p>Temperature:" +
-          function callback(data) {
-            data.Temperature;
-          } +
-          "</p>";
+        function callback(data) {
+          output += "<p>Temperature:" + data.Temperature;
+          +"</p>";
+        }
         output += "</div>";
         output += "</div>";
       }
