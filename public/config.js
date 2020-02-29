@@ -123,8 +123,8 @@ $(function() {
             }
           );
 
-          output += '<h2 id="t-' + item.thingID + '"></h2>';
-          output += '<h2 id="h-' + item.thingID + '"></h2>';
+          output += '<p id="t-' + item.thingID + '"></p>';
+          output += '<p id="h-' + item.thingID + '"></p>';
           output += "</div>";
           output += "</div>";
           break;
