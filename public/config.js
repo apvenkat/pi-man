@@ -121,8 +121,8 @@ $(function() {
           output += '<div class="card">';
           output += "<h3>" + item.thingID + "</h3>";
           output += "<p>" + item.name + "</p>";
-          output += '<p id="t-' + item.thingID + '"></p>';
-          output += '<p id="h-' + item.thingID + '"></p>';
+          output += '<div><p id="t-' + item.thingID + '"></p></div>';
+          output += '<div><p id="h-' + item.thingID + '"></p></div>';
           output += "</div>";
           output += "</div>";
           break;
