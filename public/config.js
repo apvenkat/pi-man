@@ -103,7 +103,7 @@ $(function() {
                 function(data) {
                   //#C
                   console.log(data);
-                  $("#temp").html(data.value + " " + data.unit); //#D
+                  $("#temp").html(data + "°C"); //#D
                   setTimeout(doPoll, 5000); //#E
                 }
               );
