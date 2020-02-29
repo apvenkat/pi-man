@@ -91,10 +91,6 @@ $(function() {
           break;
 
         case "dht-sensor":
-          output += '<div class="column">';
-          output += '<div class="card">';
-          output += "<h3>" + item.thingID + "</h3>";
-          output += "<p>" + item.name + "</p>";
           $(document).ready(
             //#A
             function doPollTemp() {
@@ -121,6 +117,10 @@ $(function() {
             );
           });
 
+          output += '<div class="column">';
+          output += '<div class="card">';
+          output += "<h3>" + item.thingID + "</h3>";
+          output += "<p>" + item.name + "</p>";
           output += '<p id="t-' + item.thingID + '"></p>';
           output += '<p id="h-' + item.thingID + '"></p>';
           output += "</div>";
