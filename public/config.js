@@ -99,8 +99,8 @@ $(function() {
           $.getJSON("/things/" + item.thingID + "/properties/temperature").done(
             function(response) {
               $.each(response, function(index, data) {
-                console.log(index);
-                output += "<p>" + data.Temperature + "</p>";
+                console.log(data);
+                output += "<p>" + data + "</p>";
               });
             }
           );
