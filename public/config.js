@@ -91,7 +91,7 @@ $(function() {
           "/things/" + item.thingID + "/properties/temperature",
           data,
           function(result) {
-            temp = result.Temperature;
+            temperature = result.Temperature;
           }
         );
 
