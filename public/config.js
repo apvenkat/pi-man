@@ -97,7 +97,7 @@ $(function() {
         output += "<p>" + item.name + "</p>";
 
         function processMyJson(data) {
-          output += "<p>" + data + "</p";
+          output += "<p>" + data[0] + "</p";
         }
 
         output += "</div>";
