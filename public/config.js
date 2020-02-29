@@ -89,16 +89,15 @@ $(function() {
         $.getJSON(
           "/things/" + item.thingID + "/properties/temperature",
           function(json) {
-            console.log(json);
+            output += '<div class="column">';
+            output += '<div class="card">';
+            output += "<h3>" + item.thingID + "</h3>";
+            output += "<p>" + item.name + "</p>";
+            output += "<p>Temperature:" + json.Temperature + "</p>";
+            output += "</div>";
+            output += "</div>";
           }
         );
-        output += '<div class="column">';
-        output += '<div class="card">';
-        output += "<h3>" + item.thingID + "</h3>";
-        output += "<p>" + item.name + "</p>";
-        output += "<p>Temperature:</p>";
-        output += "</div>";
-        output += "</div>";
       }
       // output += '     <div class="feedback-item item-list media-list">';
       // output += '       <div class="feedback-item media">';
