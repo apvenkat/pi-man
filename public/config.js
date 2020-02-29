@@ -87,19 +87,15 @@ $(function() {
         output += "</div>";
       } else {
         var temperature = getTemp();
-
         function getTemp() {
-          var result = null;
-          $.ajax({
-            async: false,
-            url: "/things/" + item.thingID + "/properties/temperature",
-            data: { data },
-            dataType: "json",
-            success: function(data) {
-              result = data;
+          $.getJSON(
+            "/things/" + item.thingID + "/properties/temperature",
+            function(json) {
+              temp = json.Temperature;
+              console.log(temp);
             }
-          });
-          return result;
+          );
+          return temp;
         }
 
         output += '<div class="column">';
