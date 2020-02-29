@@ -91,7 +91,7 @@ $(function() {
           $.getJSON(
             "/things/" + item.thingID + "/properties/temperature",
             function(json) {
-              temp = json.Temperature;
+              var temp = json.Temperature;
               console.log(temp);
             }
           );
