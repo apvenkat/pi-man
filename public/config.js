@@ -98,10 +98,12 @@ $(function() {
 
         output +=
           "<p>Temperature:" +
-          $.ajax(settings).done(function(response) {
-            JSON.stringify(response.Temperature).val();
-          });
-        +"</p>";
+          String(
+            $.ajax(settings).done(function(response) {
+              JSON.stringify(response.Temperature);
+            })
+          ) +
+          "</p>";
 
         output += "</div>";
         output += "</div>";
