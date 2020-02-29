@@ -122,11 +122,11 @@ $(function() {
           output += "<h3>" + item.thingID + "</h3>";
           output += "<p>" + item.name + "</p>";
           output +=
-            '<div><p class="btn btn-success btn-just-icon" id="t-' +
+            '<div><p style="line-height:10px;" class="btn btn-success btn-just-icon" id="t-' +
             item.thingID +
             '"></p></div>';
           output +=
-            '<div><p class="btn btn-success btn-just-icon" id="h-' +
+            '<div><p style="line-height:10px;" class="btn btn-success btn-just-icon" id="h-' +
             item.thingID +
             '"></p></div>';
           output += "</div>";
