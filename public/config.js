@@ -96,11 +96,14 @@ $(function() {
         output += '<div class="card">';
         output += "<h3>" + item.thingID + "</h3>";
         output += "<p>" + item.name + "</p>";
+
         function callback(data) {
-          console.log(data.Temperature);
-          output += "<p>Temperature:" + data;
-          +"</p>";
+          var temperature = getTemp();
+          function getTemp() {
+            return data.Temperature;
+          }
         }
+        output += "<p>Temperature:" + temperature + "</p>";
         output += "</div>";
         output += "</div>";
       }
