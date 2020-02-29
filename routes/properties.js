@@ -3,7 +3,7 @@ var router = express.Router();
 const Gpio = require("onoff").Gpio;
 
 router.get("/:thingID/properties/on", function(req, res) {
-  var pin = req.params.thingID.slice(-1);
+  var pin = req.params.thingID.slice(5);
   const led = new Gpio(pin, "out");
   led.read((err, value) => {
     // Asynchronous read
@@ -27,7 +27,7 @@ router.get("/:thingID/properties/on", function(req, res) {
 
 router.put("/:thingID/properties/on", function(req, res) {
   let value = req.body.on;
-  var pin = req.params.thingID.slice(-1);
+  var pin = req.params.thingID.slice(5);
   const led = new Gpio(pin, "out");
   led.write(value === true ? 1 : 0);
   res.json({ on: value });
@@ -44,7 +44,7 @@ router.get(
   "/:thingID/properties/:value",
   function(req, res) {
     var sensor = require("node-dht-sensor");
-    var pin = req.params.thingID.slice(-1);
+    var pin = req.params.thingID.slice(5);
     var dht = req.params.value;
     switch (dht) {
       case "temperature":
