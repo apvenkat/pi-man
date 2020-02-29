@@ -86,36 +86,39 @@ $(function() {
 
     $.each(data, function(key, item) {
       console.log(key);
+      var type = item.thingType;
+      switch (type) {
+        case "onoff":
+          output += '<div class="column">';
+          output += '<div class="card">';
+          output += "<h3>" + item.thingID + "</h3>";
+          output += "<p>" + item.name + "</p>";
+          output +=
+            '<div><button class="btn btn-success btn-just-icon" id="' +
+            item.thingID +
+            '"  >On</button></div>';
+          output +=
+            '<div><button class="btn btn-danger btn-just-icon" id="' +
+            item.thingID +
+            '"  >Off</button></div>';
+          output += "</div>";
+          output += "</div>";
 
-      if (item.thingType == "dht-sensor") {
-        output += '<div class="column">';
-        output += '<div class="card">';
-        output += "<h3>" + item.thingID + "</h3>";
-        output += "<p>" + item.name + "</p>";
-        output +=
-          '<div><p class="text-center" id ="' +
-          item.thingID +
-          '">' +
-          suggest +
-          "</p></div>";
+        case "dht-sensor":
+          output += '<div class="column">';
+          output += '<div class="card">';
+          output += "<h3>" + item.thingID + "</h3>";
+          output += "<p>" + item.name + "</p>";
+          output +=
+            '<div><p class="text-center" id ="' +
+            item.thingID +
+            '">' +
+            suggest +
+            "</p></div>";
 
-        output += "</div>";
-        output += "</div>";
-      } else {
-        output += '<div class="column">';
-        output += '<div class="card">';
-        output += "<h3>" + item.thingID + "</h3>";
-        output += "<p>" + item.name + "</p>";
-        output +=
-          '<div><button class="btn btn-success btn-just-icon" id="' +
-          item.thingID +
-          '"  >On</button></div>';
-        output +=
-          '<div><button class="btn btn-danger btn-just-icon" id="' +
-          item.thingID +
-          '"  >Off</button></div>';
-        output += "</div>";
-        output += "</div>";
+          output += "</div>";
+          output += "</div>";
+
         // $.getJSON(
         //   "/things/" + item.thingID + "/properties/temperature",
         //   { data },
