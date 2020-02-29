@@ -121,8 +121,8 @@ $(function() {
             );
           });
 
-          output += '<h3 id="t-' + item.thingID + '"></h3>';
-          output += '<h3 id="h-' + item.thingID + '"></h3>';
+          output += '<p id="t-' + item.thingID + '"></p>';
+          output += '<p id="h-' + item.thingID + '"></p>';
           output += "</div>";
           output += "</div>";
           break;
