@@ -96,10 +96,12 @@ $(function() {
         output += "<h3>" + item.thingID + "</h3>";
         output += "<p>" + item.name + "</p>";
 
-        $.ajax(settings).done(function(response) {
-          output +=
-            "<p>Temperature:" + JSON.stringify(response.Temperature) + "</p>";
-        });
+        output +=
+          "<p>Temperature:" +
+          $.ajax(settings).done(function(response) {
+            JSON.stringify(response.Temperature);
+          });
+        +"</p>";
 
         output += "</div>";
         output += "</div>";
