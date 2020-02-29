@@ -103,14 +103,28 @@ $(function() {
                 function(data) {
                   //#C
                   console.log(data);
-                  $("#" + item.thingID + "").html(data.Temperature); //#D
+                  $("#t-" + item.thingID + "").html(
+                    "Temperature:" + data.Temperature
+                  ); //#D
+                  setTimeout(doPoll, 5000); //#E
+                }
+              );
+              $.getJSON(
+                "/things/" + item.thingID + "/properties/humidity", //#B
+                function(data) {
+                  //#C
+                  console.log(data);
+                  $("#h-" + item.thingID + "").html(
+                    "Humidity:" + data.Humidity
+                  ); //#D
                   setTimeout(doPoll, 5000); //#E
                 }
               );
             }
           );
 
-          output += '<h2 id="' + item.thingID + '"></h2>';
+          output += '<h2 id="t-' + item.thingID + '"></h2>';
+          output += '<h2 id="h-' + item.thingID + '"></h2>';
           output += "</div>";
           output += "</div>";
           break;
