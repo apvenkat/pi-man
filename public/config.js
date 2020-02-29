@@ -97,9 +97,12 @@ $(function() {
         output += "<h3>" + item.thingID + "</h3>";
         output += "<p>" + item.name + "</p>";
 
-        function processMyJson(json) {
-          console.log(json);
-        }
+        output +=
+          "<p>" +
+          function processMyJson(json) {
+            json;
+          } +
+          "</p";
 
         output += "</div>";
         output += "</div>";
