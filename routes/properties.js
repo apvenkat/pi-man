@@ -48,7 +48,7 @@ router.get(
     var dht = req.params.value;
     switch (dht) {
       case "temperature":
-        sensor.read(11, pin, function(err, temperature) {
+        sensor.read(11, pin, function(err, temperature, humidity) {
           if (!err) {
             var temp = temperature;
             res.json({ Temperature: temp + "°C" });
@@ -56,7 +56,7 @@ router.get(
         });
         break;
       case "humidity":
-        sensor.read(11, pin, function(err, humidity) {
+        sensor.read(11, pin, function(err, temperature, humidity) {
           if (!err) {
             var humid = humidity;
             res.json({ Humidity: humid + "%" });
