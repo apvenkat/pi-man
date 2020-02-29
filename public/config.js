@@ -89,7 +89,7 @@ $(function() {
         $.getJSON(
           "/things/" + item.thingID + "/properties/temperature",
           function(json) {
-            console.log(json.temperature);
+            console.log(json);
           }
         );
         output += '<div class="column">';
