@@ -11,21 +11,6 @@ $(function() {
   });
 
   var suggest;
-  $(".feedback-messages", function(e) {
-    if (e.target.className == "text-center") {
-      $.ajax({
-        dataType: "json",
-        url: "/things/" + e.target.id + "/properties/temperature",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json"
-        },
-        success: function(data) {
-          suggest = JSON.parse(data);
-        }
-      });
-    }
-  });
 
   $(".gpio-form").submit(function(e) {
     e.preventDefault();
@@ -110,13 +95,22 @@ $(function() {
           output += '<div class="card">';
           output += "<h3>" + item.thingID + "</h3>";
           output += "<p>" + item.name + "</p>";
-          output +=
-            '<div><p class="text-center" id ="' +
-            item.thingID +
-            '">' +
-            suggest +
-            "</p></div>";
+          $(document).ready(
+            //#A
+            function doPoll() {
+              $.getJSON(
+                "http://devices.webofthings.io/pi/sensors/temperature", //#B
+                function(data) {
+                  //#C
+                  console.log(data);
+                  $("#temp").html(data.value + " " + data.unit); //#D
+                  setTimeout(doPoll, 5000); //#E
+                }
+              );
+            }
+          );
 
+          output += '<h2 id="temp"></h2>';
           output += "</div>";
           output += "</div>";
           break;
