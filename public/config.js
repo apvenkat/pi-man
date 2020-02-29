@@ -103,6 +103,7 @@ $(function() {
                 console.log(data);
                 out += "<p>" + data + "</p>";
               });
+              $(".feedback-messages").html(out);
             }
           );
         });
@@ -138,6 +139,5 @@ $(function() {
       // output += "     </div>";
     });
     $(".feedback-messages").html(output);
-    $(".feedback-messages").html(out);
   }
 });
