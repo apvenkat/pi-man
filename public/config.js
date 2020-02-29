@@ -110,16 +110,16 @@ $(function() {
             "/things/" + item.thingID + "/properties/temperature"
           );
         }
-        output += '<div class="column" id="' + item.thingID + '">';
+        output += '<div class="column">';
         output += '<div class="card">';
         output += "<h3>" + item.thingID + "</h3>";
         output += "<p>" + item.name + "</p>";
         output +=
-          '<p class="text-center" id ="' +
+          '<div><p class="text-center" id ="' +
           item.thingID +
           '">' +
           suggest +
-          "</p>";
+          "</p></div>";
 
         output += "</div>";
         output += "</div>";
