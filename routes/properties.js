@@ -44,7 +44,7 @@ router.get(
   "/:thingID/properties/:value",
   function(req, res) {
     var sensor = require("node-dht-sensor");
-    var pin = req.params.thingID.slice(5);
+    var pin = req.params.thingID.slice(4);
     var dht = req.params.value;
     switch (dht) {
       case "temperature":
