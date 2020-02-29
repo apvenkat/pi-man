@@ -98,9 +98,10 @@ $(function() {
         $(document).ready(function() {
           $.getJSON("/things/" + item.thingID + "/properties/temperature").done(
             function(response) {
+              var out = "";
               $.each(response, function(index, data) {
                 console.log(data);
-                output += "<p>" + data + "</p>";
+                out += "<p>" + data + "</p>";
               });
             }
           );
@@ -137,5 +138,6 @@ $(function() {
       // output += "     </div>";
     });
     $(".feedback-messages").html(output);
+    $(".feedback-messages").html(out);
   }
 });
