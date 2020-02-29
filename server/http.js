@@ -1,7 +1,6 @@
 var express = require("express");
 var sensorRoutes = require("./../routes/sensors");
-var digital = require("../routes/digital-simulate");
-var analog = require("../routes/analog-simulate");
+
 var pages = require("./../routes/page");
 const app = express();
 var db = require("./../db.js");
