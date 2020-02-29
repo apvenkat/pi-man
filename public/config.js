@@ -84,7 +84,21 @@ $(function() {
     $.each(data, function(key, item) {
       console.log(key);
 
-      if (item.thingType == "onoff") {
+      if (item.thingType == "dht-sensor") {
+        output += '<div class="column">';
+        output += '<div class="card">';
+        output += "<h3>" + item.thingID + "</h3>";
+        output += "<p>" + item.name + "</p>";
+        output +=
+          '<div><p class="text-center" id ="' +
+          item.thingID +
+          '">' +
+          suggest +
+          "</p></div>";
+
+        output += "</div>";
+        output += "</div>";
+      } else {
         output += '<div class="column" id="' + item.thingID + '">';
         output += '<div class="card">';
         output += "<h3>" + item.thingID + "</h3>";
@@ -99,30 +113,11 @@ $(function() {
           '"  >Off</button></div>';
         output += "</div>";
         output += "</div>";
-      } else {
         // $.getJSON(
         //   "/things/" + item.thingID + "/properties/temperature",
         //   { data },
         //   processMyJson
         // );
-        function test() {
-          return $.getJSON(
-            "/things/" + item.thingID + "/properties/temperature"
-          );
-        }
-        output += '<div class="column">';
-        output += '<div class="card">';
-        output += "<h3>" + item.thingID + "</h3>";
-        output += "<p>" + item.name + "</p>";
-        output +=
-          '<div><p class="text-center" id ="' +
-          item.thingID +
-          '">' +
-          suggest +
-          "</p></div>";
-
-        output += "</div>";
-        output += "</div>";
       }
       // output += '     <div class="feedback-item item-list media-list">';
       // output += '       <div class="feedback-item media">';
