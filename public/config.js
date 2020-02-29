@@ -98,7 +98,7 @@ $(function() {
 
         $.ajax(settings).done(function(response) {
           output +=
-            "<p>Temperature:" + JSON.parse(response.Temperature) + "</p>";
+            "<p>Temperature:" + JSON.stringify(response.Temperature) + "</p>";
         });
 
         output += "</div>";
