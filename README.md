@@ -7,7 +7,7 @@ Standards. You can connect,control and monitor sensors/actuators compatible with
 # W3C based Things Description
 All the connected devices will have their own URL to identify themselves and their properties via W3C defined architecture to describe WoT things 
 
-For example, if you connect an LED, it will have a Thing Description like shown below with only property to turn it on/off
+For example, Connect an LED in gpio-7 and navigate to postman and make a get request at http://localhost:8080/things , the response will have Thing Description like shown below with property to turn it on/off
 
 ```
   {
@@ -38,6 +38,7 @@ In similar way you can define all your IoT things with it's properties,actions,e
 * An LED
 * A Relay - Which you can connect with a light bulb or a control valve etc
 * DHT 11 and DHT 22 ( Temperature and Humidity Sensors)
+* More devices yet to come !!
 
 # Install and Run
 ```
