@@ -1,5 +1,5 @@
 # wot-pi
-A Web of Things Project 
+### A Web of Things Project 
 
 WoT-Pi is a raspberry pi based device management platform which is developed based on modern web architectures and aligned with WoT 
 Standards. You can connect,control and monitor sensors/actuators compatible with RPi in this platform via simple Web App.
