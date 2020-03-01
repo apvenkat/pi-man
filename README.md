@@ -7,7 +7,7 @@ Standards. You can connect,control and monitor sensors/actuators compatible with
 # W3C based Things Description
 All the connected devices will have their own URL to identify themselves and their properties via W3C defined architecture to describe WoT things 
 
-For example, Connect an LED in gpio-7 and navigate to postman and make a get request at http://localhost:8080/things , the response will have Thing Description like shown below with property to turn it on/off
+For example, Connect and add an LED in gpio-7 and navigate to postman and make a get request at http://localhost:8080/things , the response will have Thing Description like shown below with property to turn it on/off
 
 ```
   {
