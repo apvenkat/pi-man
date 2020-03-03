@@ -1,7 +1,7 @@
-# wot-pi
+# Pi-Man
 ### A Web of Things Project 
 
-WoT-Pi is a raspberry pi based device management platform which is developed based on modern web architectures and aligned with WoT 
+Pi-Man is a raspberry pi based device management platform which is developed based on modern web architectures and aligned with WoT 
 Standards. You can connect,control and monitor sensors/actuators compatible with RPi in this platform via simple Web App.
 
 # W3C based Things Description
@@ -42,7 +42,7 @@ In similar way you can define all your IoT things with it's properties,actions,e
 
 # Install and Run
 ```
-git clone https://github.com/apvenkat/wot-pi
+git clone https://github.com/apvenkat/pi-man
 
 npm install
 
