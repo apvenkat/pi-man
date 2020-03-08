@@ -7,10 +7,9 @@ $(function() {
       "Content-Type": "application/json",
       Accept: "application/json"
     },
+    cache: false,
     success: updateThings
   });
-
-  var suggest;
 
   $(".gpio-form").submit(function(e) {
     e.preventDefault();
