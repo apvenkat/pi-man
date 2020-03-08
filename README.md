@@ -42,9 +42,11 @@ In similar way you can define all your IoT things with it's properties,actions,e
 
 # Install and Run
 ```
-git clone https://github.com/apvenkat/pi-man
+sudo git clone https://github.com/apvenkat/pi-man
 
-npm install
+sudo npm install
+
+sudo npm rebuild
 
 npm start
 
