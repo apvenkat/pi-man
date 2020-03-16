@@ -4,7 +4,7 @@
 Pi-Man is a raspberry pi based device management platform which is developed based on modern web architectures and aligned with WoT 
 Standards. You can connect,control and monitor sensors/actuators compatible with RPi in this platform via simple Web App.
 
-![pi-man](https://user-images.githubusercontent.com/32690669/76758411-99372380-67c4-11ea-8726-ce8098bec873.PNG)
+![pi-man](https://user-images.githubusercontent.com/32690669/76759029-d5b74f00-67c5-11ea-8a52-f55749014765.PNG)
 
 # W3C based Things Description
 All the connected devices will have their own URL to identify themselves and their properties via W3C defined architecture to describe WoT things 
