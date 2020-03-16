@@ -15,14 +15,15 @@ app.use(express.static(__dirname + "./../public"));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+//route for pages and things
 app.use("/", pages);
 app.use("/things", require("../routes/things"));
-app.use("/things", require("../routes/onoff"));
-app.use("/things", require("../routes/dht-sensor"));
 app.use("/users", require("./../routes/users"));
-// app.use("/pi/sensors", sensorRoutes);
-// app.use("/pi/sensors/pir/simulate", digital);
-// app.use("/pi/sensors/temperature/simulate", analog);
+//web things code and routes
+app.use("/things", require("../routes/things/onoff"));
+app.use("/things", require("../routes/things/dht-sensor"));
+
 app.get("/", function(req, res) {
   if (req.accepts("html")) {
     res.render("login");

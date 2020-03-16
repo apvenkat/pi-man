@@ -76,28 +76,6 @@ router.post("/", function(req, res) {
   });
 });
 
-// function processData(res, sql) {
-//   db.serialize(function() {
-//     db.all(sql, function(err, rows) {
-//       if (err) {
-//         console.error(err);
-//         res.status(500).send(err);
-//       } else sendData(res, rows, err);
-//     });
-//   });
-// }
-
-// function sendData(res, data, err) {
-//   res.setHeader("Access-Control-Allow-Origin", "*");
-
-//   if (data[0]) {
-//     const thing = JSON.parse(row.description);
-//     res.json(thing);
-//   } else {
-//     res.status(404).send("Device not found");
-//   }
-// }
-
 router.get("/", auth, function(req, res) {
   if (req.accepts("html")) {
     res.render("dashboard");
