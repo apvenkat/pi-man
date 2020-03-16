@@ -1,5 +1,4 @@
 var express = require("express");
-var sensorRoutes = require("./../routes/sensors");
 
 var pages = require("./../routes/page");
 const app = express();
